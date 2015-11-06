@@ -11,10 +11,19 @@ Rails.application.routes.draw do
 		post "/unfollow", to: "users#unfollow"
 	end 
 end
-	resources :images
+	resources :images do 
+		member do 
+			post "/like", to: "images#like"
+			post "unlike", to: "images#unlike"
+		end
+		resources :items, only:[:create, :destroy]		
+		resources :comments, only:[:create, :destroy]
+		
+	end
 		get "/profile", to: "users#profile"
 		get "/profile/:username", to: "users#show", as: "profile_user"
 		
 		
-	root "users#new"
+	root "users#profile"
+
 end

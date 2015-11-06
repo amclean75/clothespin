@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 	before_action :authorize_user, only: [:edit, :update, :destroy]
 	
 	def index 
-		@users = User.all 
+		@users = User.search(params[:search])
 	end
 	
 	def new 
@@ -54,14 +54,15 @@ class UsersController < ApplicationController
 	end
 	
 	def follow
+		@user = current_user
 		Relationship.create(follower_id: current_user.id, followed_id: params[:id])
-		redirect_to @user, notice: "Successfully followed #{@user.username}!"
+		redirect_to profile_path, notice: "Successfully followed #{@user.username}!"
 	end
 	
 	def unfollow
 		@rel = Relationship.find_by(followed_id: @user.id, follower_id: current_user.id)
 		@rel.destroy 
-		redirect_to @user, notice: "Successfully unfollowed #{@user.username}!"
+		redirect_to profile_path, notice: "Successfully unfollowed #{@user.username}!"
 	end
 	
 	private 
@@ -73,7 +74,7 @@ class UsersController < ApplicationController
 	end
 	
 	def user_params
-		params.require(:user).permit(:username, :email, :password, :password_confirmation)
+		params.require(:user).permit(:username, :email, :password, :password_confirmation, :bio, :brands)
 	end
 	
 	def set_user
@@ -83,7 +84,7 @@ class UsersController < ApplicationController
 				@user = User.where("lower(username) = ?", username.downcase).first 
 				unless @user 
 					flash[:notice] = "That user could not be found."
-					redirect_to users_path
+					redirect_to root_path
 				end
 			else
 				@user = User.find(params[:id])

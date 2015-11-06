@@ -1,0 +1,16 @@
+<h1>Listing Users</h1>
+<ul>
+	<% for user in @users %>
+	<li>
+		<%= link_to user.username, profile_user_path(user.username) %>
+	
+		<% if current_user and current_user != user %>
+			<% if current_user.following.include? user %>
+				<p><%= button_to "unfollow", unfollow_user_path(user.id) %></p>
+			<% else %>
+				<p><%= button_to "follow", follow_user_path(user.id) %></p>
+			<% end %>
+		<% end %>
+	</li>
+	<% end %>
+</ul>
