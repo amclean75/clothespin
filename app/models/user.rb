@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
     has_many :likes
+    has_many :brands
     has_many :images, dependent: :destroy
     has_many :liked_images, through: :likes, source: "image" #, foreign_key: :image_id 
     has_many :comments, dependent: :destroy

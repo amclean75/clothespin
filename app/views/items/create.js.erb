@@ -1,0 +1,4 @@
+<% unless @item.errors.any? %>
+	$(".items").append("<%= j render partial: @item %>")
+	$("#item_item_type, #item_description, #item_url").val("");
+<% end %>

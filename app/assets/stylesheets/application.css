@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+#target {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+    width: 400px;
+    height: 300px;
+}
+
+#target img {
+	width: 400px;
+    height: 300px;
+}

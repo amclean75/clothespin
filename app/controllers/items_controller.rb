@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+	
 	def create 
 		@image = Image.find(params[:image_id])
 		@item = Item.create(item_params)

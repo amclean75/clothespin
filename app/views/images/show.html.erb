@@ -1,19 +1,22 @@
 <%= render @image %>
-<%= render @item %>
+<%= render 'items/newitem' %>
 
 <h4>Items</h4>
+	<div class="items">
 	<% @image.items.each do |item| %>
-		<p><%= item.display_item_type %>
+		<p class="clothesitems"><%= item.display_item_type %>
 		<%= item.description %>
-		<%= item.url %></p>
+		<%= item.url %>
+		<%= link_to "x", image_item_path(image_id: item.image.id, id: item.id), method: :delete %></p>		
 	<% end %>
+	</div>
 	
 	
 	<% if current_user and current_user != @user %>
 		<% if current_user.liked_images.include? @image %>
-			<p><%= button_to "Unlike", unlike_image_path(@image) %></p>
+			<p><%= button_to "Unlike", unlike_image_path(@image), remote: true, :form => { :id => "unlikebutton" } %></p>
 		<% else %>
-			<p><%= button_to "Like", like_image_path(@image) %></p>
+			<p><%= button_to "Like", like_image_path(@image), remote: true, :form => { :id => "likebutton" } %></p>
 		<% end %>
 	<% end %>
 	

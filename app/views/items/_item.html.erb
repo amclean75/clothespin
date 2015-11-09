@@ -1,0 +1,6 @@
+<p>
+	<%= item.display_item_type %>
+	<%= item.description %>
+	<%= item.url %>
+	<%= link_to "x", image_item_path(image_id: item.image.id, id: item.id), method: :delete %>
+</p>

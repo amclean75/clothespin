@@ -10,8 +10,8 @@ class ImagesController < ApplicationController
 		@image = Image.new	
 	end
 	
-	def show 
-		@item = Item.new
+	def show
+		@item = Item.new 
 		@comment = Comment.new
 		@like = Like.new
 	end

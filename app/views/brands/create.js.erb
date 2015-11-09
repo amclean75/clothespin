@@ -1,0 +1,4 @@
+<% unless @brand.errors.any? %>
+	$(".brands").append("<%= j render partial: @brand %>")
+	$("#brand_name").val("");
+<% end %>

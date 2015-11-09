@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 	end
 	
 	def show 
-		
 	end
 	
 	def edit
@@ -21,6 +20,7 @@ class UsersController < ApplicationController
 	
 	def profile 
 		@user = current_user
+		@brand = Brand.new
 		render :show 
 	end
 	
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
 	end
 	
 	def user_params
-		params.require(:user).permit(:username, :email, :password, :password_confirmation, :bio, :brands)
+		params.require(:user).permit(:username, :email, :password, :password_confirmation, :bio)
 	end
 	
 	def set_user

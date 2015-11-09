@@ -1,0 +1,9 @@
+<div class="input_fields_wrap">
+	<button class="add_field_button_brand">Add Another Brand</button>
+	<div class="brand_form">
+		<%= form_for [@user, @brand], remote: true do |f| %>
+		<%= f.select :name, options_for_select(Brand::NAME.map.with_index { |c,i| [c, i] }) %>
+		<%= f.submit name="Add Brand" %>
+		<% end %>
+	</div>
+</div>
