@@ -7,23 +7,24 @@ Rails.application.routes.draw do
 		
 	resources :users, only: [:new, :index, :create] do 
 		member do 
-		post "/follow", to: "users#follow"
-		post "/unfollow", to: "users#unfollow"
-	end 
+			post "/follow", to: "users#follow"
+			post "/unfollow", to: "users#unfollow"
+		end 
 		resources :brands, only:[:destroy]
-end
+	end
 	resources :images do 
 		member do 
 			post "/like", to: "images#like"
-			post "unlike", to: "images#unlike"
+			delete "/like", to: "images#unlike"
 		end
 		resources :items, only:[:destroy]
 		resources :comments, only:[:create, :destroy]		
 	end
-		get "/profile", to: "users#profile"
-		get "/profile/:username", to: "users#show", as: "profile_user"
-		post "/images/:image_id", to: "items#create", as: "image_items"
-		post "/users/:user_id", to: "brands#create", as: "user_brands"	
+	get "/profile", to: "users#profile"
+	get "/profile/:username", to: "users#show", as: "profile_user"
+	get "/featured", to: "images#featured"
+	post "/images/:image_id", to: "items#create", as: "image_items"
+	post "/users/:user_id", to: "brands#create", as: "user_brands"	
 
 	root "users#profile"
 

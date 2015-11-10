@@ -1,11 +1,15 @@
 <h1><%= @user.username %></h1>
-<%= render 'brands/newbrand' %>
+<% if current_user and current_user == @user %>
+	<%= render 'brands/newbrand' %>
+<% end %>
 
 <h4>Favorite Brands</h4>
 	<div class="brands">
 		<% @user.brands.each do |brand| %>
 			<p><%= brand.display_name %>
-			<%= link_to "x", user_brand_path(user_id: current_user, id: brand.id), method: :delete %></p>
+			<% if current_user and current_user == @user %>
+				<%= link_to "x", user_brand_path(user_id: current_user, id: brand.id), method: :delete %></p>
+			<% end %>
 		<% end %>
 	</div>
 		
@@ -28,16 +32,20 @@
 		<h3><%= @user.username %>'s Followers (<% @user.followers.length %>)</h3>
 		<ul>
 			<% @user.followers.each do |user| %>
-				<li><%= link_to user.username, profile_user_path(user.username) %></li>
+				<% if current_user.username != user.username %>
+					<li><%= link_to user.username, profile_user_path(user.username) %></li>
+				<% end %>
 			<% end %>
 		</ul>
 	<% end %>
 	
 	<% if @user.following.any? %>
-		<h3><%= @user.username %>'s Following</h3>
+		<h3><%= @user.username %>'s Following (<% @user.following.length %>)</h3>
 		<ul>
 			<% @user.following.each do |user| %>
-				<li><%= link_to user.username, profile_user_path(user.username) %></li>
+				<% if current_user.username != user.username %>
+					<li><%= link_to user.username, profile_user_path(user.username) %></li>
+				<% end %>
 			<% end %>
 		</ul>
 	<% end %>

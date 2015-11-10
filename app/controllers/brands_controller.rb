@@ -28,5 +28,4 @@ class BrandsController < ApplicationController
 	def brand_params
 		params.require(:brand).permit(:name, :url).merge(user: current_user)
 	end
-	
 end

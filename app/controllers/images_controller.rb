@@ -32,14 +32,35 @@ class ImagesController < ApplicationController
 	
 	def like
 		@image = Image.find(params[:id])
-		Like.create(user: current_user, image: @image)
-		redirect_to @image, notice: "You liked the photo!"
+		@like = Like.new(user: current_user, image: @image)
+		if @like.save 
+			respond_to do |format|
+				format.html { redirect_to @image, notice: "You liked the photo!" }
+				format.js { render :create }
+			end
+		else 
+			respond_to do |format|
+				format.html { redirect_to @image, notice: "There was a problem." }
+				format.js { flash.now[:notice] = "There was a problem." }
+			end
+		end
 	end
 	
 	def unlike
 		@rel = Like.find_by(user_id: current_user, image_id: @image)
-		@rel.destroy 
-			redirect_to @image, notice: "You unliked the picture!"
+		if @rel.destroy 
+			respond_to do |format|
+				format.html { redirect_to @image, notice: "You unliked the photo!" }
+				format.js { render :create }
+			end
+		else
+			redirect_to @image 
+		end
+	end
+	
+	def featured
+		@images = Image.order("COALESCE(likes_counter, 0) DESC").limit(10)
+		@brands = Brand.all
 	end
 	
 	def destroy 

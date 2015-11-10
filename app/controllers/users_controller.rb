@@ -54,7 +54,6 @@ class UsersController < ApplicationController
 	end
 	
 	def follow
-		@user = current_user
 		Relationship.create(follower_id: current_user.id, followed_id: params[:id])
 		redirect_to profile_path, notice: "Successfully followed #{@user.username}!"
 	end

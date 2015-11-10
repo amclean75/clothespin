@@ -1,0 +1,5 @@
+<div class="likenames">
+<% @image.likes.each do |like| %>
+	<p><%= link_to like.user.username, profile_user_path(like.user.username) %></p>
+<% end %>
+</div>

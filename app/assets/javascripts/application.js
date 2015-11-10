@@ -42,11 +42,6 @@ $(document).ready(function() {
 	$(wrapper).on("click",".remove_field", function(e){ //click remove field
 		e.preventDefault(); $(this).parent('div').remove(); x--;
 	})
-
-	$(".clothesitems").hide().fadeOut();
-	$("#likebutton").on("click", function() {
-		$(".clothesitems").show();
-	});
 });
 
 
@@ -60,25 +55,24 @@ $(document).on("page:change", function() {
 	$("#unlikebutton").on("ajax:success", function() {
 		console.log("console log works")
 	});
-	$("#likebutton").on("ajax:success", function() {
+	$("#unlikebutton").on("ajax:success", function() {
 		console.log("console log works")
 	});
-});
 
-// Function for photo upload preview
-$(function() {
-  $('#pictureInput').on('change', function(event) {
-    var files = event.target.files;
-    var image = files[0]
-    var reader = new FileReader();
-    reader.onload = function(file) {
-      var img = new Image();
-      console.log(file);
-      img.src = file.target.result;
-      $('#target').html(img);
-    }
-    reader.readAsDataURL(image);
-    console.log(files);
-  });
+	// Function for photo upload preview
+	$(function() {
+	  $('#pictureInput').on('change', function(event) {
+	    var files = event.target.files;
+	    var image = files[0]
+	    var reader = new FileReader();
+	    reader.onload = function(file) {
+	      var img = new Image();
+	      console.log(file);
+	      img.src = file.target.result;
+	      $('#target').html(img);
+	    }
+	    reader.readAsDataURL(image);
+	    console.log(files);
+	  });
+	});
 });
-

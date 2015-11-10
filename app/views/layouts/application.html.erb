@@ -13,6 +13,7 @@
 			<% if user_signed_in? %>
 			<span>Hello <%= link_to current_user.username, profile_path %></span>
 				<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+				<%= link_to "Featured", featured_path %>
 				<%= link_to "New Outfit", new_image_path %>
 			<% else %>
 				<%= link_to "Sign Up!", new_user_registration_path %>
