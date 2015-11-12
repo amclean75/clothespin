@@ -1,21 +1,34 @@
-<%= render @image %>
-<% if current_user and current_user == @image.user %>
-	<%= render 'items/newitem' %>
-<% end %>
-<h4>Items</h4>
-<%= render "like" %>
-<%= render "likenames" %>
-		
-<h3>New Comment</h3>
-	<%= form_for [@image, @comment] do |f| %>
-		<%= f.text_area :body %><br>
-		<%= f.submit %>
+<div class="imageshow">
+	<%= render @image %>
+	<%= render "like" %>
+	<%= render "likenames" %>
+	<% if current_user and current_user == @image.user %>
+		<div class="item-add-form">
+		<%= render 'items/newitem' %>
+		</div>
 	<% end %>
-		
-<h3>Comments</h3>
-	<% @image.comments.each do |comment| %>
-		<p><%= comment.body %></p>
-		<p>by <%= link_to comment.user.username, profile_user_path(comment.user.username) %>
-		<p><%= link_to "Delete", image_comment_path(image_id: comment.image.id, id: comment.id), method: :delete %></p>
-		<hr>
-	<% end %>	
+	
+	<div class="row">
+		<div class="col-md-6">
+			<div class="item-append-form">
+				<h3>Items</h3>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="comment-add-form">
+				<h3>New Comment</h3>
+					<%= form_for [@image, @comment] do |f| %>
+						<%= f.text_area :body %><br />
+						<%= f.submit %>
+					<% end %>
+				<h3>Comments</h3>
+					<% @image.comments.each do |comment| %>
+						<p><%= comment.body %></p>
+						<p>by <%= link_to comment.user.username, profile_user_path(comment.user.username) %></p>
+						<p><%= link_to "Delete", image_comment_path(image_id: comment.image.id, id: comment.id), method: :delete %></p>
+						<hr>
+					<% end %>
+			</div>
+		</div>
+	</div>
+</div>	

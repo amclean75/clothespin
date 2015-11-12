@@ -10,9 +10,74 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *
+ *
  *= require_tree .
  *= require_self
  */
+ 
+/* magenta #882250 */ 
+/* gold #cda214 */
+ 
+@import 'bootstrap';
+
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    font-family: arial;
+} 
+
+.notice {
+	padding: 1em;
+	border: 1px solid #cda214;
+	background-color: #f2d67a;
+}
+
+
+#welcome-page {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(welcomeimg);
+	background-size: cover;
+}
+
+#welcome-page h1 {
+	font-family: 'Parisienne', cursive;
+	color: white;
+	float: right;
+	font-size: 90px;
+	margin-right: 60px;
+	margin-top: 18%;
+}
+
+.welcome-buttons {
+	margin-top: 28%;
+	margin-right: 10%;
+	text-align: right;
+	padding: 5px;
+	font-size: 24px;
+}
+
+.welcome-buttons button {
+	background-color: transparent;
+	border-radius: 100px;
+	border: 2px white groove;
+}
+
+.welcome-buttons a {
+	color: white;
+	padding: 5px;
+}
+
+.welcome-buttons a:hover {
+	color: #882250;
+}
 
 #target {
     height: 75px;
@@ -28,5 +93,248 @@
 }
 
 .media-object {
+	max-width: 70%;
+	border: 3px solid #cda214;
+	margin: 0 auto;
+	margin-top: 1%;
+}
+
+/* Log in && Sign up form  */
+
+.form-style {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #882250;
+	background-size: cover;
+}
+
+.loginform {
+	background-color: white;
+	width: intrinsic;
+	margin: 0 auto;
+	padding: 30px;
+	border-radius: 30px;
+	border: 3px solid #cda214;
+	margin-top: 10%;
+}
+
+.form-logo {
+	font-family: 'Parisienne', cursive;
+	color: #882250;
+	font-size: 50px;
+	text-align: center;
+}
+
+/* Nav bar */
+
+header {
 	max-width: 100%;
+	text-align: left;
+	margin: 0 auto;
+	background-color: white;
+}
+
+.logo {
+	font-family: 'Parisienne', cursive;
+	float: left;
+	margin-right: 20px;
+	margin-left: 20px;
+	font-size: 55px;
+}
+
+.logo a {
+	color: #882250;
+}
+
+.logo a:hover {
+	color: #cda214;
+}
+
+.search {
+	position: relative;
+	float: left;
+	width: 35%;
+	font-size: 20px;
+	margin-top: 1.75%;
+}
+
+.account_nav {
+	float: right;
+	padding-left: 0;
+	font-size: 20px;
+	color: #882250;
+	margin-top: 2%;
+}
+
+.account_nav a {
+	color: #882250;
+	padding: 8px;
+}
+
+.account_nav a:hover {
+	color: #cda214; 
+}
+
+.nav-name {
+	margin-right: 30px;
+}
+
+/* Profile page */
+
+.profile-page {
+	position: absolute;
+	background-color: #882250; 
+	width: 100%;
+	background-size: cover;
+}
+
+.name {
+	color: white;
+	font-size: 38px;
+}
+
+.profileblocks {
+	background-color: white;
+	width: intrinsic;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	padding: 55px;
+	border-radius: 30px;
+	border: 3px solid #cda214;
+	margin-top: 10%;
+}
+
+.picturesname {
+	color: white;
+	text-align: center;
+}
+
+.image a {
+	color: white;
+}
+
+/* new image page */
+.newimagestyle {
+	position: absolute;
+	width: 100%;
+	background-color: #882250;
+	background-size: cover;
+}
+
+.newpicform {
+	background-color: white;
+	width: intrinsic;
+	margin: 0 auto;
+	padding: 30px;
+	border-radius: 30px;
+	border: 3px solid #cda214;
+	margin-top: 4%;
+	margin-bottom: 4%;
+}
+
+/* picture show page */
+
+.imageshow {
+	position: absolute;
+	width: 100%;
+	background-color: #882250;
+	background-size: cover;
+}
+
+.imageshow p {
+	text-align: center;
+}
+
+.item-add-form {
+	background-color: white;
+	width: intrinsic;
+	margin: 0 auto;
+	padding: 30px;
+	border-radius: 30px;
+	border: 3px solid #cda214;
+}
+
+.item-append-form {
+	background-color: white;
+	width: 50%;
+	margin: 0 auto;
+	padding: 50px;
+	border-radius: 30px;
+	border: 3px solid #cda214;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	text-align: center;
+	margin-left: 200px;
+}
+
+.comment-add-form {
+	background-color: white;
+	width: intrinsic;
+	margin: 0 auto;
+	padding: 50px;
+	border-radius: 30px;
+	border: 3px solid #cda214;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	margin-right: 200px;
+}
+
+#unlikebutton {
+	text-align: center;
+	font-size: 28px;
+}
+
+.button_to input[value="Like"] {
+	border-radius: 50px;
+	background-color: #f5f5dc;
+	border: 3px solid #cda214;
+	padding: 15px;
+}
+
+.button_to input[value="Unlike"] {
+	border-radius: 50px;
+	background-color: #f5f5dc;
+	border: 3px solid #cda214;
+	padding: 15px;
+}
+
+/* featured page */
+
+.featured-show {
+	position: absolute;
+	width: 100%;
+	background-color: #882250;
+	background-size: cover;
+}
+
+.image p {
+	text-align: center;
+	color: white;
+}
+
+.featured {
+	text-align: center;
+	color: white;
+}
+
+.top-brands {
+	text-align: center;
+	color: white;
+	font-size: 24px;
+}
+
+.brand-hr {
+	width: 30%;
+	border-color: #cda214;
+}
+
+/* news feed */
+
+.closet-show {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #882250;
+	background-size: cover;
 }

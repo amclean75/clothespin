@@ -1,15 +1,15 @@
 <% if current_user.liked_images.include? @image %>
 	<div class="items">
-	<% @image.items.each do |item| %>
-		<p class="clothesitems"><%= item.display_item_type %>
-		<%= item.description %>
-		<%= item.url %>
-		<% if current_user and current_user == @image.user %>
-			<%= link_to "x", image_item_path(image_id: item.image.id, id: item.id), method: :delete %></p>
-		<% end %>		
-	<% end %>
+		<% @image.items.each do |item| %>
+			<p class="clothesitems"><%= item.display_item_type %>
+			<%= item.description %>
+			<%= item.url %>
+			<% if current_user and current_user == @image.user %>
+				<%= link_to "x", image_item_path(image_id: item.image.id, id: item.id), method: :delete %></p>
+			<% end %>		
+		<% end %>
+	</div>
 <% end %>
-</div>
 <% if current_user and current_user != @user %>
 	<% if current_user.liked_images.include? @image %>
 		<p><%= button_to "Unlike", like_image_path(@image), remote: true, :form => { :id => "unlikebutton" }, method: :delete %></p>

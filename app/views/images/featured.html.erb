@@ -1,5 +1,12 @@
-<h1>Featured</h1>
+<div class="featured-show">
+<h1 class="featured">Featured</h1>
 	<%= render @images %>
-<h1>Top Brands Being Shopped</h1>
-	<%= render @brands %>
+<h1 class="featured">Top Brands Being Shopped</h1>
+<div class="list-brands">
+	<% @brands.each do |brand| %>
+		<p class="top-brands"><%= brand.display_name %></p>
+		<hr class="brand-hr">
+	<% end %>
+</div>
+</div>
 	

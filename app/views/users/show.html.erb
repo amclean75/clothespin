@@ -1,55 +1,66 @@
-<h1><%= @user.username %></h1>
-<% if current_user and current_user == @user %>
-	<%= render 'brands/newbrand' %>
-<% end %>
+<div class="profile-page">
+	<div class="container">
+		<h1 class="name"><%= @user.username %></h1>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="profileblocks">
+					<% if current_user and current_user == @user %>
+						<%= render 'brands/newbrand' %>
+					<% end %>
+	
+					<h4>Favorite Brands</h4>
+						<div class="brands">
+							<% @user.brands.each do |brand| %>
+								<p><%= brand.display_name %>
+								<% if current_user and current_user == @user %>
+									<%= link_to "x", user_brand_path(user_id: current_user, id: brand.id), method: :delete %></p>
+								<% end %>
+							<% end %>
+						</div>
+						<p>Bio: <%= @user.bio %></p>
+				</div>
 
-<h4>Favorite Brands</h4>
-	<div class="brands">
-		<% @user.brands.each do |brand| %>
-			<p><%= brand.display_name %>
-			<% if current_user and current_user == @user %>
-				<%= link_to "x", user_brand_path(user_id: current_user, id: brand.id), method: :delete %></p>
-			<% end %>
-		<% end %>
+				<div class="profileblocks">
+					<% if current_user and current_user != @user %>
+						<% if current_user.following.include? @user %>
+							<p><%= button_to "unfollow", unfollow_user_path(@user) %></p>
+						<% else %>
+							<p><%= button_to "follow", follow_user_path(@user) %></p>
+						<% end %>
+					<% end %>
+					
+					<% if current_user and @user == current_user %>
+						<p><%= link_to "Edit Profile", edit_user_registration_path(@user) %></p>
+					<% end %>
+					
+					<% if @user.followers.any? %>
+						<h3><%= @user.username %>'s Followers (<% @user.followers.length %>)</h3>
+						<ul>
+							<% @user.followers.each do |user| %>
+								<% if current_user.username != user.username %>
+									<li><%= link_to user.username, profile_user_path(user.username) %></li>
+								<% end %>
+							<% end %>
+						</ul>
+					<% end %>
+
+					<% if @user.following.any? %>
+						<h3><%= @user.username %>'s Following (<% @user.following.length %>)</h3>
+						<ul>
+							<% @user.following.each do |user| %>
+								<% if current_user.username != user.username %>
+									<li><%= link_to user.username, profile_user_path(user.username) %></li>
+								<% end %>
+							<% end %>
+						</ul>
+					<% end %>
+				</div>
+			</div>
+			
+			<div class="col-md-6">
+				<h3 class="picturesname"><%= @user.username %>'s Pictures</h3>
+					<%= render @user.images %>
+			</div>
+		</div>
 	</div>
-		
-		
-<p>Bio: <%= @user.bio %></p>
-
-	<% if current_user and current_user != @user %>
-		<% if current_user.following.include? @user %>
-			<p><%= button_to "unfollow", unfollow_user_path(@user) %></p>
-		<% else %>
-			<p><%= button_to "follow", follow_user_path(@user) %></p>
-		<% end %>
-	<% end %>
-	
-	<% if current_user and @user == current_user %>
-		<p><%= link_to "Edit Profile", edit_user_registration_path(@user) %></p>
-	<% end %>
-	
-	<% if @user.followers.any? %>
-		<h3><%= @user.username %>'s Followers (<% @user.followers.length %>)</h3>
-		<ul>
-			<% @user.followers.each do |user| %>
-				<% if current_user.username != user.username %>
-					<li><%= link_to user.username, profile_user_path(user.username) %></li>
-				<% end %>
-			<% end %>
-		</ul>
-	<% end %>
-	
-	<% if @user.following.any? %>
-		<h3><%= @user.username %>'s Following (<% @user.following.length %>)</h3>
-		<ul>
-			<% @user.following.each do |user| %>
-				<% if current_user.username != user.username %>
-					<li><%= link_to user.username, profile_user_path(user.username) %></li>
-				<% end %>
-			<% end %>
-		</ul>
-	<% end %>
-
-<h3><%= @user.username %>'s Posts</h3>
-	<%= render @user.images %>
-	
+</div>

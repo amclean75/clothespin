@@ -26,6 +26,6 @@ Rails.application.routes.draw do
 	post "/images/:image_id", to: "items#create", as: "image_items"
 	post "/users/:user_id", to: "brands#create", as: "user_brands"	
 
-	root "users#profile"
+	root "sessions#new"
 
 end

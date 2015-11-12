@@ -5,38 +5,50 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>		
+	<link rel="stylesheet" type="text/css" href="main.css">	
+	<link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet' type='text/css'>	
 </head>
 <body>
 	<header>
-		<%= link_to "tellmewear", images_path %>
 		<nav>
 			<% if user_signed_in? %>
-			<span>Hello <%= link_to current_user.username, profile_path %></span>
-				<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-				<%= link_to "Featured", featured_path %>
-				<%= link_to "New Outfit", new_image_path %>
-			<% else %>
-				<%= link_to "Sign Up!", new_user_registration_path %>
-				<%= link_to "Sign In!", new_user_session_path %>
-			<% end %>
-			<%= form_tag users_path, :method => 'get' do %>
-				<p>
-					<%= text_field_tag :search, params[:search] %>
-					<%= submit_tag "Search", :username => nil %>
-				</p>
+			<div class="logo"><%= link_to "tellmewear", images_path %></div>
+			<div class="container-fluid">
+						<div class="search">
+							<%= form_tag users_path, :method => 'get' do %>
+								<p>
+									<%= text_field_tag :search, params[:search] %>
+									<%= submit_tag "Search", :username => nil %>
+								</p>
+							<% end %>
+						</div>
+						<ul class="account_nav">
+							<span class="nav-name">Hello <%= link_to current_user.username + "!", profile_path %></span>
+							<%= link_to "New Outfit", new_image_path %></li>						
+							<%= link_to "Featured", featured_path %></li>
+							<%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>						
+						</ul>
+				</div>
 			<% end %>
 		</nav>
 	</header>
-	<main>
-		<% if flash[:notice] %>
-			<div class="notice"><%= flash[:notice] %></div>
-		<% end %>
-		
-		<% if flash[:alert] %>
-			<div class="alert"><%= flash[:notice] %></div>
-		<% end %> 
-
-		<%= yield %>
-	</main>
+	<container>
+		<main>
+			<% if flash[:notice] %>
+				<div class="notice"><%= flash[:notice] %></div>
+			<% end %>
+			
+			<% if flash[:alert] %>
+				<div class="alert"><%= flash[:notice] %></div>
+			<% end %> 
+	
+			<%= yield %>
+		</main>
+	</container>
 </body>
 </html>
