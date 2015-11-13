@@ -24,12 +24,13 @@
 html {
     height: 100%;
     margin: 0;
+	font-family: 'Lato', sans-serif;
 }
 
 body {
     height: 100%;
     margin: 0;
-    font-family: arial;
+	font-family: 'Lato', sans-serif;
 } 
 
 .notice {
@@ -106,7 +107,7 @@ body {
 	width: 100%;
 	height: 100%;
 	background-color: #882250;
-	background-size: cover;
+	background-size: cover;	
 }
 
 .loginform {
@@ -165,6 +166,7 @@ header {
 	font-size: 20px;
 	color: #882250;
 	margin-top: 2%;
+	font-family: 'Lato', sans-serif;
 }
 
 .account_nav a {
@@ -192,6 +194,9 @@ header {
 .name {
 	color: white;
 	font-size: 38px;
+	display: inline-block;
+	margin-left: 2%;
+	font-family: 'Lato', sans-serif;
 }
 
 .profileblocks {
@@ -205,13 +210,38 @@ header {
 	margin-top: 10%;
 }
 
+.profile-top {
+	margin-top: 2%;
+}
+
+.profilepic {
+	display: inline-block;
+}
+
+.profilepic img {
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+}
+
+.search input[value="Search"] {
+	padding: 5px;
+	font-family: 'Lato', sans-serif;
+}
+
 .picturesname {
 	color: white;
 	text-align: center;
+	font-family: 'Lato', sans-serif;
 }
 
 .image a {
 	color: white;
+}
+
+.new_brand input[value="Add Brand"] {
+	padding: 5px;
+	font-family: 'Lato', sans-serif;
 }
 
 /* new image page */
@@ -265,7 +295,6 @@ header {
 	margin-top: 3%;
 	margin-bottom: 3%;
 	text-align: center;
-	margin-left: 200px;
 }
 
 .comment-add-form {
@@ -277,7 +306,6 @@ header {
 	border: 3px solid #cda214;
 	margin-top: 3%;
 	margin-bottom: 3%;
-	margin-right: 200px;
 }
 
 #unlikebutton {
@@ -297,6 +325,10 @@ header {
 	background-color: #f5f5dc;
 	border: 3px solid #cda214;
 	padding: 15px;
+}
+
+.clothesitems {
+	color: white;
 }
 
 /* featured page */
@@ -334,7 +366,34 @@ header {
 .closet-show {
 	position: absolute;
 	width: 100%;
-	height: 100%;
 	background-color: #882250;
 	background-size: cover;
 }
+
+/* Edit page */
+
+.editshow {
+	position: absolute;
+	width: 100%;
+	background-color: #882250;
+	background-size: cover;
+}
+
+.editform {
+	background-color: white;
+	width: intrinsic;
+	margin: 0 auto;
+	padding: 30px;
+	border-radius: 30px;
+	border: 3px solid #cda214;
+	margin-top: 5%;
+	margin-bottom: 5%;	
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Lato', sans-serif;
+}
+p {
+	font-family: 'Lato', sans-serif;
+}
+

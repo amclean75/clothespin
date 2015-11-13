@@ -4,8 +4,8 @@
 	    <%= form_for [@image, @item], remote: true do |f| %>
 	<!-- mapping the array in Item model and gives the values index -->
 		<%= f.select :item_type, options_for_select(Item::ITEM_TYPE.map.with_index { |c,i| [c, i] }) %> 
-		<%= f.text_area :description %>
-		<%= f.text_area :url %>
+		<%= f.text_area :description, placeholder: "description" %>
+		<%= f.url_field :url, placeholder: "shopping url" %>
 		<%= f.submit name="Add Item" %>
 		<% end %>
 	</div>

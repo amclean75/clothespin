@@ -1,13 +1,19 @@
 <div class="profile-page">
 	<div class="container">
-		<h1 class="name"><%= @user.username %></h1>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="profile-top">
+					<div class="profilepic"><%= image_tag @user.avatar.url(:medium) %></div>			
+					<h1 class="name"><%= @user.username %></h1>
+				</div>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="profileblocks">
 					<% if current_user and current_user == @user %>
 						<%= render 'brands/newbrand' %>
 					<% end %>
-	
 					<h4>Favorite Brands</h4>
 						<div class="brands">
 							<% @user.brands.each do |brand| %>
