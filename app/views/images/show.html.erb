@@ -1,6 +1,8 @@
 <div class="imageshow">
 	<%= render @image %>
-	<%= render "like" %>
+
+<!-- rendering like button (see notes on _like) then appending the names to a list below the button -->
+	<%= render "like" %>	
 	<%= render "likenames" %>
 	<% if current_user and current_user == @image.user %>
 		<div class="item-add-form">
@@ -9,12 +11,7 @@
 	<% end %>
 	
 	<div class="row">
-		<div class="col-md-6">
-			<div class="item-append-form">
-				<h3>Items</h3>
-			</div>
-		</div>
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<div class="comment-add-form">
 				<h3>New Comment</h3>
 					<%= form_for [@image, @comment] do |f| %>

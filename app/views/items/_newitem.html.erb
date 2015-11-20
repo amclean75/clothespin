@@ -1,11 +1,10 @@
 <div class="input_fields_wrap">
-    <button class="add_field_button">Add More Clothes</button>
     <div class="item_form">
 	    <%= form_for [@image, @item], remote: true do |f| %>
 	<!-- mapping the array in Item model and gives the values index -->
-		<%= f.select :item_type, options_for_select(Item::ITEM_TYPE.map.with_index { |c,i| [c, i] }) %> 
-		<%= f.text_area :description, placeholder: "description" %>
-		<%= f.url_field :url, placeholder: "shopping url" %>
+		<p><%= f.select :item_type, options_for_select(Item::ITEM_TYPE.map.with_index { |c,i| [c, i] }) %></p> 
+		<p><%= f.text_area :description, placeholder: "description" %></p>
+		<p><%= f.url_field :url, placeholder: "shopping url (http...)" %></p>
 		<%= f.submit name="Add Item" %>
 		<% end %>
 	</div>

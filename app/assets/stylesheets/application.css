@@ -100,7 +100,7 @@ body {
 	margin-top: 1%;
 }
 
-/* Log in && Sign up form  */
+/* ------------------------- Log in && Sign up form --------------------- */
 
 .form-style {
 	position: absolute;
@@ -127,7 +127,7 @@ body {
 	text-align: center;
 }
 
-/* Nav bar */
+/* ------------------------ Nav bar ----------------------- */
 
 header {
 	max-width: 100%;
@@ -182,7 +182,7 @@ header {
 	margin-right: 30px;
 }
 
-/* Profile page */
+/* ------------------------- Profile page --------------------- */
 
 .profile-page {
 	position: absolute;
@@ -244,7 +244,7 @@ header {
 	font-family: 'Lato', sans-serif;
 }
 
-/* new image page */
+/* --------------------- new image page ----------------- */
 .newimagestyle {
 	position: absolute;
 	width: 100%;
@@ -263,7 +263,7 @@ header {
 	margin-bottom: 4%;
 }
 
-/* picture show page */
+/*  ------------- picture show page ----------------- */
 
 .imageshow {
 	position: absolute;
@@ -329,15 +329,62 @@ header {
 
 .clothesitems {
 	color: white;
+	font-size: 20px;
 }
 
-/* featured page */
+.clothesitems a {
+	color: #cda214;
+}
+
+.likenames a {
+	color: #cda214;
+	font-size: 20px;
+}
+
+.item_form {
+	width: 300px;
+	text-align: center
+}
+
+.new_item textarea[id="item_description"] {
+	width: 100%;
+}
+
+.new_item input[value="Add Item"] {
+	color: black;
+	font-family: 'Lato', sans-serif;
+}
+
+.comment-add-form h3 {
+	font-family: 'Lato', sans-serif;	
+}
+
+.comment-add-form p {
+	text-align: left;
+}
+
+.new_comment input[value="Create Comment"] {
+	font-family: 'Lato', sans-serif;		
+}
+
+#show_me p {
+	color: white;
+	font-size: 20px;
+	max-width: 70%;
+	margin: 0 auto;
+	margin-bottom: 2%;
+}
+/* -------------------- featured page ------------------ */
 
 .featured-show {
 	position: absolute;
 	width: 100%;
 	background-color: #882250;
 	background-size: cover;
+}
+
+.featured-show img {
+	max-width: 40%;
 }
 
 .image p {
@@ -361,7 +408,7 @@ header {
 	border-color: #cda214;
 }
 
-/* news feed */
+/* ----------------- news feed --------------- */
 
 .closet-show {
 	position: absolute;
@@ -370,7 +417,11 @@ header {
 	background-size: cover;
 }
 
-/* Edit page */
+.closet-show img {
+	max-width: 40%;
+}
+
+/* --------------- Edit page --------------- */
 
 .editshow {
 	position: absolute;

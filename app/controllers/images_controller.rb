@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create, :destroy, :like, :inlike]
 
 	def index 
-		@images = Image.where(:user_id => current_user.following)
+		@images = Image.where(:user_id => current_user.following).shuffle
 	end
 	
 	def new 
@@ -60,7 +60,7 @@ class ImagesController < ApplicationController
 	
 	def featured
 		@images = Image.order("COALESCE(likes_counter, 0) DESC").limit(10)
-		@brands = Brand.all
+		@brands = Brand.last(10)
 	end
 	
 	def destroy 

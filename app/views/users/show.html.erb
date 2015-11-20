@@ -10,7 +10,8 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<div class="profileblocks">
+<!-- first block on profle page  -->
+				<div class="profileblocks"> 
 					<% if current_user and current_user == @user %>
 						<%= render 'brands/newbrand' %>
 					<% end %>
@@ -24,8 +25,12 @@
 							<% end %>
 						</div>
 						<p>Bio: <%= @user.bio %></p>
+						<% if current_user and @user == current_user %>
+							<p><%= link_to "Edit Profile", edit_user_registration_path(@user) %></p>
+						<% end %>
 				</div>
 
+<!-- second block on profile page -->
 				<div class="profileblocks">
 					<% if current_user and current_user != @user %>
 						<% if current_user.following.include? @user %>
@@ -34,13 +39,8 @@
 							<p><%= button_to "follow", follow_user_path(@user) %></p>
 						<% end %>
 					<% end %>
-					
-					<% if current_user and @user == current_user %>
-						<p><%= link_to "Edit Profile", edit_user_registration_path(@user) %></p>
-					<% end %>
-					
 					<% if @user.followers.any? %>
-						<h3><%= @user.username %>'s Followers (<% @user.followers.length %>)</h3>
+						<h3><%= @user.username %>'s Followers (<%= @user.followers.length %>)</h3>
 						<ul>
 							<% @user.followers.each do |user| %>
 								<% if current_user.username != user.username %>
@@ -51,7 +51,7 @@
 					<% end %>
 
 					<% if @user.following.any? %>
-						<h3><%= @user.username %>'s Following (<% @user.following.length %>)</h3>
+						<h3><%= @user.username %>'s Following (<%= @user.following.length %>)</h3>
 						<ul>
 							<% @user.following.each do |user| %>
 								<% if current_user.username != user.username %>
@@ -62,7 +62,8 @@
 					<% end %>
 				</div>
 			</div>
-			
+
+<!-- pictures rendered belonging to profile user -->
 			<div class="col-md-6">
 				<h3 class="picturesname"><%= @user.username %>'s Pictures</h3>
 					<%= render @user.images %>

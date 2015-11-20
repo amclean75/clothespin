@@ -6,4 +6,5 @@ class Item < ActiveRecord::Base
 	def display_item_type
 		ITEM_TYPE[item_type]
 	end
+	
 end

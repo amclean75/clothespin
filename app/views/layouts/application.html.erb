@@ -18,8 +18,8 @@
 	<header>
 		<nav>
 			<% if user_signed_in? %>
-			<div class="logo"><%= link_to "tellmewear", images_path %></div>
-			<div class="container-fluid">
+				<div class="logo"><%= link_to "tellmewear", images_path %></div>
+					<div class="container-fluid">
 						<div class="search">
 							<%= form_tag users_path, :method => 'get' do %>
 								<p>
@@ -34,7 +34,7 @@
 							<%= link_to "Featured", featured_path %></li>
 							<%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>						
 						</ul>
-				</div>
+					</div>
 			<% end %>
 		</nav>
 	</header>
