@@ -1,0 +1,7 @@
+development:
+  access_key_id: AKIAIRZLNXTA6R4OPG4Q
+  secret_access_key: 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
+
+production:
+  access_key_id: AKIAIRZLNXTA6R4OPG4Q
+  secret_access_key: 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
